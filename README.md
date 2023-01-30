@@ -14,7 +14,7 @@ Use Python3 to run the homework1_htk180000.py file in the text_processing folder
 
 The data file should contain entries where each line is 
 
->Last,First,Middle Initial,ID,Office phone
+> Last,First,Middle Initial,ID,Office phone
 
 with the first line being the headers.
 
