@@ -13,10 +13,27 @@ A path to the file to read is given as an argument.
 import sys
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
+from nltk.tokenize import word_tokenize
 from random import seed
 from random import randint
 from time import time
 
+
+def lexical_diversity(text):
+    """
+    Calculates and prints the lexical diversity of the text
+    :param text: the text sample to analyze
+    """
+    tokens = word_tokenize(text)
+
+    # lowercase, get rid of punctuation, numbers
+    tokens = [t.lower() for t in tokens if t.isalpha()]
+    unique_tokens = set(tokens)
+    print(tokens)
+    print(unique_tokens)
+
+    # Display lexical diversity as the number of unique tokens divided by number of total tokens
+    print("Lexical diversity: %.2f" % (len(unique_tokens) / len(tokens)))
 
 def validate_guess(guess):
     """
@@ -136,9 +153,11 @@ if __name__ == '__main__':
     # Read file into text
     with open(sys.argv[1], 'r') as file:
         text = file.read()
-    # remove newline characters
+    # Remove newline characters
     text = text.replace('\n', ' ')
 
-    
+    # Display the lexical diversity
+    lexical_diversity(text)
+
     # Play the guessing game
     guessing_game(['coot', 'dog'])
