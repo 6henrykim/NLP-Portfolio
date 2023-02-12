@@ -133,7 +133,12 @@ if __name__ == '__main__':
         print('Error: Please enter a filepath as a system arg')
         sys.exit()
 
-    # TODO: Process the file
+    # Read file into text
+    with open(sys.argv[1], 'r') as file:
+        text = file.read()
+    # remove newline characters
+    text = text.replace('\n', ' ')
 
+    
     # Play the guessing game
     guessing_game(['coot', 'dog'])
