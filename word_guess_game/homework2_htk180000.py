@@ -11,13 +11,17 @@ A path to the file to read is given as an argument.
 """
 
 import sys
-from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from random import seed
 from random import randint
 from time import time
+import nltk
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
 
+
+# Download nltk data
+# nltk.download()
 
 def lexical_diversity(text):
     """
@@ -29,11 +33,56 @@ def lexical_diversity(text):
     # lowercase, get rid of punctuation, numbers
     tokens = [t.lower() for t in tokens if t.isalpha()]
     unique_tokens = set(tokens)
-    print(tokens)
-    print(unique_tokens)
 
     # Display lexical diversity as the number of unique tokens divided by number of total tokens
     print("Lexical diversity: %.2f" % (len(unique_tokens) / len(tokens)))
+
+
+def process_text(text):
+    """
+    Tokenizes the text and removes words in the NLTK stopword list and have length less than or equal to 5
+    :return: A list of tokens (not unique) and a list of nouns
+    """
+    tokens = word_tokenize(text)
+    # Lowercase, get rid of punctuation, numbers
+    tokens = [t.lower() for t in tokens if (t.isalpha()) and (t not in stopwords.words('english')) and (len(t) > 5)]
+
+    # Get the lemmas
+    wnl = WordNetLemmatizer()
+    lemmas = [wnl.lemmatize(t) for t in tokens]
+    # Make list of unique lemmas
+    lemmas_unique = list(set(lemmas))
+
+    # Tag the parts of speech
+    tags = nltk.pos_tag(lemmas_unique)
+    print("First 20 tagged words:", tags[:20])
+
+    # Make a list of nouns from unique lemmas that have NN in their tag
+    nouns = [t[0] for t in tags if "NN" in t[1]]
+
+    print("Number of tokens after preprocessing:", len(tokens))
+    print("Number of tokens after preprocessing:", len(nouns))
+    return tokens, nouns
+
+
+def noun_occurrences(tokens, nouns):
+    """
+    Counts the number of times each noun occurs in a list of tokens
+    :param tokens: a list of tokens
+    :param nouns: a list of unique nouns
+    :return: a dictionary with a noun as the key and its number of occurrences as its value
+    """
+
+    # Create the dictionary
+    noun_dict = {}
+    for noun in nouns:
+        noun_dict[noun] = tokens.count(noun)
+
+    # Sort by number of occurrences
+    sorted_dict = {key: val for key, val in sorted(noun_dict.items(), key=lambda entry: entry[1], reverse=True)}
+
+    return sorted_dict
+
 
 def validate_guess(guess):
     """
@@ -151,6 +200,7 @@ if __name__ == '__main__':
         sys.exit()
 
     # Read file into text
+    print("Input file:", sys.argv[1])
     with open(sys.argv[1], 'r') as file:
         text = file.read()
     # Remove newline characters
@@ -158,6 +208,22 @@ if __name__ == '__main__':
 
     # Display the lexical diversity
     lexical_diversity(text)
+    print()
+
+    # Process the text
+    tokens, nouns = process_text(text)
+    print()
+
+    # Get the dictionary of nouns and their number of occurrences
+    noun_dict = noun_occurrences(tokens, nouns)
+
+    # Print 50 most common nouns
+    most_common_nouns = list(noun_dict.items())[:50]
+    print("50 Most common nouns")
+    for entry in most_common_nouns:
+        print(entry)
+    print()
 
     # Play the guessing game
-    guessing_game(['coot', 'dog'])
+    game_words = [entry[0] for entry in most_common_nouns]
+    guessing_game(game_words)
