@@ -6,4 +6,4 @@ Use Python3 to run the homework2_htk180000.py file in the word_guess_game folder
 
 > python homework1_htk180000.py data.txt
 
-Note: this program uses the NLTK library and requires that nltk.download() have already been used to download corpora data.
+Note: this program uses the NLTK library and requires that nltk.download() have already been used to download corpora data. I used nltk.download('all') to get all available data.
