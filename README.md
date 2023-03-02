@@ -11,11 +11,11 @@ This is a basic text processor that takes a data file of employee information an
 ### How To Run
 Use Python3 to run the homework1_htk180000.py file in the text_processing folder and provide a path to the data file. For example:
 
-> python homework1_htk180000.py data/data.csv
+`python homework1_htk180000.py data/data.csv`
 
 The data file should contain entries where each line is 
 
-> Last,First,Middle Initial,ID,Office phone
+`Last,First,Middle Initial,ID,Office phone`
 
 with the first line being the headers.
 
@@ -31,7 +31,7 @@ This program takes a text file, calculates its lexical diversity, tokenizes it, 
 ### How To Run
 Use Python3 to run the homework2_htk180000.py file in the word_guess_game folder and provide a path to the data file. For example:
 
-> python homework1_htk180000.py data.txt
+`python homework1_htk180000.py data.txt`
 
 Note: this program uses the NLTK library and requires that nltk.download() have already been used to download corpora data.  I used nltk.download('all') to get all available data.
 
@@ -56,6 +56,6 @@ The second part of this program predicts the language of a sample text by calcul
 ### How to Run
 Download all the LangId files and save them in the same directory as the Python scripts. Also make sure the NLTK library is installed in the environment. Then run the scripts in order.
 
-> python homework3_jef180001_htk180000_part1.py
+`python homework3_jef180001_htk180000_part1.py`
 
-> python homework3_jef180001_htk180000_part2.py
+`python homework3_jef180001_htk180000_part2.py`
