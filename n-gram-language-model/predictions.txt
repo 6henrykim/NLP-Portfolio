@@ -41,7 +41,7 @@
 41 Italian
 42 French
 43 Italian
-44 English
+44 Italian
 45 French
 46 Italian
 47 French
@@ -241,7 +241,7 @@
 241 French
 242 Italian
 243 English
-244 English
+244 Italian
 245 English
 246 Italian
 247 Italian
@@ -259,7 +259,7 @@
 259 Italian
 260 English
 261 Italian
-262 English
+262 Italian
 263 Italian
 264 French
 265 English
@@ -294,7 +294,7 @@
 294 Italian
 295 French
 296 French
-297 English
+297 Italian
 298 Italian
 299 French
 300 English

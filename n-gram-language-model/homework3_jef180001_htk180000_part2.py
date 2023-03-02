@@ -3,7 +3,8 @@ CS 4395.002 Human Language Technologies
 Dr. Mazidi
 
 Homework 3 N-Gram Language Model
-Henry Kim HTK180000
+Jordan Frimpter
+Henry Kim
 Due: Mar. 4, 2023
 
 Part 2
@@ -17,38 +18,51 @@ import pickle
 import math
 
 
-def compute_log_prob(text, unigram_dict, bigram_dict):
+def compute_log_prob(text: str, unigram_dict: dict[str, int], bigram_dict: dict[str, int], vocab_size: int):
     """
-    Computes the log probability of generating the text given a dictionary of unigram and bigram occurrences using
-    Laplace smoothing to compensate for tokens not seenin training.
+    Computes the probability of generating the text from a language given a dictionary of unigram and bigram occurrences
+    using Laplace smoothing to compensate for tokens not seen in training.
     :param text: The text to calculate probability of.
     :param unigram_dict: The dictionary of unigram occurrences
     :param bigram_dict: The dictionary of bigram occurrences
-    :return: The log probability of generating the text from the training data
+    :param vocab_size: The total number of unique words in all training dictionaries
+    :return: The probability of generating the text from the training data
     """
+
     # Remove newline characters and lowercase the text
     text = text.replace('\n', ' ')
     text = text.lower()
 
-    unigrams_test = word_tokenize(text)
-    bigrams_test = list(ngrams(unigrams_test, 2))
-    vocab_size = len(unigram_dict)
+    # unigram generation
+    unigrams_test = [t.lower() for t in word_tokenize(text)]  # lowercase to consistency
+    # Replace the numbers with NUM since numbers aren't likely to reveal which language text is
+    unigrams_test = ['NUM' if u.isdigit() else u for u in unigrams_test]
 
-    # calculate log probability using Laplace smoothing
-    p_log = 0
+    # bigram generation
+    bigrams_test = list(ngrams(unigrams_test, 2))  # generate list of bigrams in test text
+
+    p_laplace = 1
+    # generate probabilities for all the following words
     for bigram in bigrams_test:
-        # n is the number of times the bigram occurs in the training data
-        n = bigram_dict[bigram] if bigram in bigram_dict else 0
-        # d is the number of times the first word of the bigram occurs in the training data
-        d = unigram_dict[bigram[0]] if bigram[0] in unigram_dict else 0
 
-        p_log = p_log + math.log(((n + 1) / (d + vocab_size)))
-    return p_log
+        # get bigram count from training
+        bigram_occurrences = bigram_dict[bigram] if bigram in bigram_dict else 0
+
+        # get unigram count from training
+        unigram = bigram[0]
+        unigram_occurrences = unigram_dict[unigram] if unigram in unigram_dict else 0
+
+        # calculate log probability
+        p_laplace += math.log((bigram_occurrences + 1 / (unigram_occurrences + vocab_size)), 2)
+
+    return p_laplace
 
 
 # Main execution
 if __name__ == '__main__':
-    # Get the dictionaries, the length of training data, and the vocab size
+    # Expects files to exist; failing for files being inaccessible is a suitable catastrophic failure given the scope.
+
+    # Get the dictionaries, the length of training data, and the vocab size from stored pickles
     with open('LangId.train.English.unigrams.pickle', 'rb') as file:
         english_unigrams = pickle.load(file)
     with open('LangId.train.English.bigrams.pickle', 'rb') as file:
@@ -68,14 +82,20 @@ if __name__ == '__main__':
     with open('LangId.test', 'r', encoding='utf8') as file:
         lines = file.readlines()
 
-    # Create a dictionary of predictions
-    i = 1
+    # Calculate total vocab size of the three languages:
+    total_vocab_size = len(english_unigrams)
+    total_vocab_size += len(french_unigrams)
+    total_vocab_size += len(italian_unigrams)
+
+    # Create a dictionary of predictions for each line
+    i = 1  # start at 1 used to match indexes with the given file indexes
     predictions = {}
     for line in lines:
-        english_log_prog = compute_log_prob(line, english_unigrams, english_bigrams)
-        french_log_prog = compute_log_prob(line, french_unigrams, french_bigrams)
-        italian_log_prog = compute_log_prob(line, italian_unigrams, italian_bigrams)
+        english_log_prog = compute_log_prob(line, english_unigrams, english_bigrams, total_vocab_size)
+        french_log_prog = compute_log_prob(line, french_unigrams, french_bigrams, total_vocab_size)
+        italian_log_prog = compute_log_prob(line, italian_unigrams, italian_bigrams, total_vocab_size)
 
+        # select greatest prediction as the prediction to save to the dictionary
         max_log_prog = english_log_prog
         predictions[i] = 'English'
 
@@ -99,7 +119,7 @@ if __name__ == '__main__':
         lines = file.readlines()
 
     # Check the answers and calculate answers
-    i = 1
+    i = 1  # start at 1 used to match indexes with the given file indexes
     num_wrong = 0
     print('Missed predictions:')
     for line in lines:
@@ -108,6 +128,10 @@ if __name__ == '__main__':
             print(str(i) + '\t\tActual: ' + actual + '\t\tPredicted: ' + predictions[i])
             num_wrong += 1
         i += 1
+
+    # output special message for all correct
+    if num_wrong == 0:
+        print("[no predictions were misclassifications]")
 
     # Output accuracy
     print('Total accuracy: ' + str(1 - (num_wrong / i)))
