@@ -131,4 +131,4 @@ dmypy.json
 # PyCharm folder
 .idea/
 word_guess_game/anat19.txt
-n-gram-language-model/*.pickle
+n-gram_language_model/*.pickle
