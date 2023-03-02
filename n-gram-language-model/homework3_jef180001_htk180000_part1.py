@@ -4,7 +4,7 @@ Dr. Mazidi
 
 Homework 3 N-Gram Language Model
 Jordan Frimpter
-Henry Kim 
+Henry Kim
 Due: Mar. 4, 2023
 
 Part 1
