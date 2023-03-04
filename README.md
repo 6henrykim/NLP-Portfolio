@@ -59,3 +59,7 @@ Download all the LangId files and save them in the same directory as the Python 
 `python homework3_jef180001_htk180000_part1.py`
 
 `python homework3_jef180001_htk180000_part2.py`
+
+
+## Sentence Parsing
+An overview of phrase structure grammar parsing, dependency parsing, and semantic role label parsing can be viewed [here](sentence_parsing/htk180000_sentence_parsing.pdf). These examples were done with [AllenNLP](https://demo.allennlp.org/reading-comprehension/bidaf-elmo) and Standford's [CoreNLP](https://stanfordnlp.github.io/CoreNLP/).
