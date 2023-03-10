@@ -63,3 +63,15 @@ Download all the LangId files and save them in the same directory as the Python 
 
 ## Sentence Parsing
 An overview of phrase structure grammar parsing, dependency parsing, and semantic role label parsing can be viewed [here](sentence_parsing/htk180000_sentence_parsing.pdf). These examples were done with [AllenNLP](https://demo.allennlp.org/reading-comprehension/bidaf-elmo) and Standford's [CoreNLP](https://stanfordnlp.github.io/CoreNLP/).
+
+
+## Web Crawler
+This project was completed in partnership with [@Hikaito](https://github.com/Hikaito).
+This program scrapes the web for articles about the Titanic starting with its [Wikipedia](https://en.wikipedia.org/wiki/Titanic) page. The paragraph sections of these webpages are scraped for keywords related to the Titanic and a small SQLite database is created to tag sentences by the keywords they contain. The code can be viewed [here](web_crawler/web_crawler_jef180001_htk180000.py). A report about the knowledge base and a potential chatbot that could use the knowledge base can be viewed [here](web_crawler/web_crawler_report.pdf). 
+
+### How to Run
+Install the NLTK and BeautifulSoup4 libraries and download the stopwords corpus for NLTK. Then run the script
+
+`python web_crawler_jef180001_htk180000.py`
+
+
