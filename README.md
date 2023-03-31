@@ -75,3 +75,5 @@ Install the NLTK and BeautifulSoup4 libraries and download the stopwords corpus 
 `python web_crawler_jef180001_htk180000.py`
 
 
+## Text Classification
+This [notebook](text_classification/text_classification_htk180000.ipynb) was created on Kaggle and tries using Naive Bayes, Logistic Regression, and basic Neural Net classifiers from [scikit-learn](https://scikit-learn.org/stable/index.html) on the [Physics vs Chemistry vs Biology](https://www.kaggle.com/datasets/vivmankar/physics-vs-chemistry-vs-biology/code?datasetId=1687228&sortBy=dateRun&tab=profile) dataset of Reddit comments to classify their subjects. A PDF version of the notebook can be viewed [here](text_classification/text_classification_htk180000.pdf).
