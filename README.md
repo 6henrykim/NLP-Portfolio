@@ -77,3 +77,6 @@ Install the NLTK and BeautifulSoup4 libraries and download the stopwords corpus 
 
 ## Text Classification
 This [notebook](text_classification/text_classification_htk180000.ipynb) was created on Kaggle and tries using Naive Bayes, Logistic Regression, and basic Neural Net classifiers from [scikit-learn](https://scikit-learn.org/stable/index.html) on the [Physics vs Chemistry vs Biology](https://www.kaggle.com/datasets/vivmankar/physics-vs-chemistry-vs-biology/code?datasetId=1687228&sortBy=dateRun&tab=profile) dataset of Reddit comments to classify their subjects. A PDF version of the notebook can be viewed [here](text_classification/text_classification_htk180000.pdf).
+
+## ACL Paper Summary
+This [summary](acl_paper_summary/jef180001_htk180000_ACL_paper_summary.pdf) of the paper [GPT-D: Inducing Dementia-related Linguistic Anomalies by Deliberate Degradation of Artificial Neural Language Models](https://aclanthology.org/2022.acl-long.131/) from the ACL Anthology was completed in partnership with [@Hikaito](https://github.com/Hikaito).
