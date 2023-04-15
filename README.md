@@ -85,7 +85,7 @@ This [summary](acl_paper_summary/jef180001_htk180000_ACL_paper_summary.pdf) of t
 This project was completed in partnership with [@Hikaito](https://github.com/Hikaito).
 This chatbot converses with the user about works in the [ACL Anthology](https://aclanthology.org/). The user can ask about authors or papers published in the anthology, and the bot will scrape the associated page to tell the user information such as the publishing date, coauthors, or paper abstracts. The bot also downloads pdfs of the scraped papers and tracks which papers and authors it has mentioned to the user.
 
-The code can be viewed [here](chatbot). A report about the chatbot can be viewed [here](chatbot/jef180001_htk180000_chatbot_report.pdf). 
+The code can be viewed [here](https://github.com/6henrykim/NLP-Portfolio/tree/main/chatbot). A report about the chatbot can be viewed [here](chatbot/jef180001_htk180000_chatbot_report.pdf). 
 
 ### How to Run
 Make sure the following files and folders are in the same directory:
