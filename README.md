@@ -78,5 +78,34 @@ Install the NLTK and BeautifulSoup4 libraries and download the stopwords corpus 
 ## Text Classification
 This [notebook](text_classification/text_classification_htk180000.ipynb) was created on Kaggle and tries using Naive Bayes, Logistic Regression, and basic Neural Net classifiers from [scikit-learn](https://scikit-learn.org/stable/index.html) on the [Physics vs Chemistry vs Biology](https://www.kaggle.com/datasets/vivmankar/physics-vs-chemistry-vs-biology/code?datasetId=1687228&sortBy=dateRun&tab=profile) dataset of Reddit comments to classify their subjects. A PDF version of the notebook can be viewed [here](text_classification/text_classification_htk180000.pdf).
 
-## ACL Paper Summary
+## ACL Anthology Paper Summary
 This [summary](acl_paper_summary/jef180001_htk180000_ACL_paper_summary.pdf) of the paper [GPT-D: Inducing Dementia-related Linguistic Anomalies by Deliberate Degradation of Artificial Neural Language Models](https://aclanthology.org/2022.acl-long.131/) from the ACL Anthology was completed in partnership with [@Hikaito](https://github.com/Hikaito).
+
+## ACL Anthology Chatbot
+This project was completed in partnership with [@Hikaito](https://github.com/Hikaito).
+This chatbot converses with the user about works in the [ACL Anthology](https://aclanthology.org/). The user can ask about authors or papers published in the anthology, and the bot will scrape the associated page to tell the user information such as the publishing date, coauthors, or paper abstracts. The bot also downloads pdfs of the scraped papers and tracks which papers and authors it has mentioned to the user.
+
+The code can be viewed [here](chatbot). A report about the chatbot can be viewed [here](chatbot/jef180001_htk180000_chatbot_report.pdf). 
+
+### How to Run
+Make sure the following files and folders are in the same directory:
+- chatterbot-corpus-master-edit folder
+    - Contains the edited chatterbot corpus files
+- new-corpus folder
+     - Contains the task-specific chatterbot files
+- jef180001_htk180000_backend.py script
+- jef180001_htk180000_baxter.py script
+- jef180001_htk180000_baxter_conversation.py script
+- jef180001_htk180000_chatbot.py script
+- jef180001_htk180000_database.py script
+- jef180001_htk180000_webscraping.py script
+
+
+Download and install all the libraries in the requirements.txt file
+
+`python -m pip install -r requirements.txt --no-deps`
+
+
+Run the jef180001_htk180000_chatbot.py script
+
+`python -m jef180001_htk180000_chatbot.py`
