@@ -42,7 +42,7 @@ This [Python notebook](wordnet/homework3_htk180000.ipynb) contains an exploratio
 ## N-Gram Language Classification
 This project was completed in partnership with [@Hikaito](https://github.com/Hikaito).
 This program classifies a text's language as English, French, or Italian based on unigram and bigram presence in a language training corpus.
-This program is divided into two parts that can be viewed [here](n-gram_language_model/). A discussion of n-grams can be viewed [here](n-gram_langaug_model/N-Gram_Narrative).
+This program is divided into two parts that can be viewed [here](n-gram_language_model/). A discussion of n-grams can be viewed [here](n-gram_language_model/N-Gram_Narrative.pdf).
 
 ### Part 1
 The first part of this program reads from three language training files and creates pickle files of the counts of each unigram and bigram.
