@@ -1,6 +1,10 @@
 # NLP-Portfolio
 This is my portfolio for the CS 4365.001 Human Language Technologies course taught by Dr. Mazidi at UTDallas. These projects were completed for the Spring 2023 semester. 
 
+Over the course of these projects I worked on my technical skills including Python programming and using libraries such as Keras, Scikit-Learn, and NLTK. I also developed soft skills in reading research articles, presenting my work to an audience, and collaborative coding. 
+
+My other work has been in research and working in Unity app development. You can view my resume [here](Henry_Kim-HTK180000-Resume.pdf).
+
 ## Overview of Natural Language Processing
 [Here](overview_of_nlp.pdf) are my responses to some prompts about natural language processing.
 
